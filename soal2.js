@@ -1,12 +1,12 @@
 const prompt = require('prompt-sync')({sigint: true});
 const productBin = require('./productBin.json');
 
-const inputProductId = prompt('Masukkan ProductId: ');
+const inputProductCode = prompt('Masukkan productCode: ');
 
-const sumQuantityByStorageId=(data, productId)=>{
+const sumQuantityByStorageId=(data, productCode)=>{
     let totalQuantity = 0;
     for (const item of data) {
-      if (item.productId === Number(productId)) {
+      if (item.productCode  === productCode) {
         totalQuantity += item.quantity;
       }
     }
@@ -14,6 +14,6 @@ const sumQuantityByStorageId=(data, productId)=>{
     return totalQuantity;
 }
 
-const totalQuantity = sumQuantityByStorageId(productBin.data, inputProductId);
+const totalQuantity = sumQuantityByStorageId(productBin.data, inputProductCode);
 
-console.log(`Total quantity untuk produk dengan ID ${inputProductId}: ${totalQuantity}`);
+console.log(`Total quantity untuk produk dengan ID ${inputProductCode}: ${totalQuantity}`);
